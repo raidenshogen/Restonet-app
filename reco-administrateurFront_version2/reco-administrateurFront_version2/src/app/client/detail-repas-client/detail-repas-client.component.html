@@ -1,0 +1,123 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+  <br>
+  <div  class="para">
+    <h4 class="fw-bold py-3 mb-4" >Détails Reservation de repas</h4>
+  </div>
+  <!-- Basic Layout & Basic with Icons -->
+  <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+      <div class="card mb-4">
+        <div class="card-body">
+          <form  style="font-size:12px;" >
+
+            <h4 class="fw-bold py-3 mb-4"><img
+              src="../assets/img/logos/admin-icon.png" width="35"/><span class="text-muted fw-light"> Détails Reservation de Repas </span> </h4>
+
+            <div class="row mb-5">
+              <div class="col-md">
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img class="card-img card-img-left" src="../assets/img/elements/12.jpg" alt="Card image">
+                    </div>
+                    <div class="col-md-6">
+                     <div  class="card-body">
+                          <h5 class="card-title">Information du repas</h5>
+                          <p class="card-text">
+                            <label class="col-sm-6 lbl">Lieu du repas</label> {{ repasReservation.section.section }}
+                            <label class="col-sm-6 lbl">Date</label> {{ repasReservation.daterepas | date: 'yyyy-MM-dd' }}
+                            <label class="col-sm-6 lbl">Service</label> {{ repasReservation.codeservice }}
+                            <label class="col-sm-6 lbl">Désignation</label> {{ repasReservation.designation }}
+                        </p>
+                      </div>
+                       
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-8 repas1">
+              <h5>Veuillez sélectionner les composantes de votre repas</h5>
+              <ul>
+                <li>Pour réserver une composante, cochez la case correspondante</li>
+                <li>Les composantes définies par défaut ont été préselectionnées</li>
+              </ul>
+            </div>
+            <br>
+            <div class="card">
+              <h5 class="card-header"><div class="nav-item d-flex align-items-center"><i class="bx bx-search "></i><input type="text" placeholder="Search..."  class="form-control border-0 shadow-none"></div></h5>
+              <div class="table-responsive text-nowrap">
+
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let detail of details; let i = index">
+                    <!-- FIX: Use the correct property names from your DTO -->
+                    <td>{{ detail.libellearticle || 'N/A' }}</td>
+                    <td>{{ detail.prixventeatva1.toFixed(2) }}</td>
+                    <td class="qte">
+                      <div class="input-group quantity">
+                        <input type="number" 
+                               name="quantity" 
+                               (input)="updateTotal(detail, $event)" 
+                               class="quantity form-control input-number" 
+                               [value]="detail.quantity || 0" 
+                               min="0" 
+                               max="100">
+                      </div>
+                    </td>
+                    <td>{{ (detail.total || 0).toFixed(2) }}</td>
+                  </tr>
+                  </tbody>
+                  <tfoot class="table-success">
+                  <tr>
+                    <th scope="row">Total</th>
+                    <td></td>
+                    <td></td>
+                    <td>{{ calculateTotal() }}</td>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+
+            <div class="col-lg-8 btn1">
+              <button type="button" class=" btn btn-success active d-block  btona" data-bs-toggle="button" autocomplete="off" aria-pressed="true" (click)="reserveRepas()">
+                Réserver maintenant
+              </button>
+            </div>
+
+            <div class="col-lg-8 btn2">
+              <button type="button" class="btn rounded-pill btn-outline-primary return " [routerLink]="['/client/ReservationRepasClientComponent']">Retour</button>
+            </div>
+
+            <div *ngIf="repasReservation">
+              <h5>Détails du repas du {{ repasReservation.daterepas | date }}</h5>
+            </div>
+
+            <div *ngIf="details.length > 0; else noDetails">
+              <!-- Your existing detail display code -->
+            </div>
+
+            <ng-template #noDetails>
+              <p>Aucun détail disponible pour ce repas.</p>
+            </ng-template>
+
+            <!-- HTML !-->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

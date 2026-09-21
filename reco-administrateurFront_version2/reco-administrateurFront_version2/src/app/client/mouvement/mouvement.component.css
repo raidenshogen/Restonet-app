@@ -1,0 +1,4 @@
+.card {
+  height: 500px; /* adjust the height as needed */
+  overflow-y: auto;
+}

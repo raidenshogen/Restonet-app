@@ -1,0 +1,154 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+  <br>
+  <div  class="para">
+    <h4 class="fw-bold py-3 mb-4" > Réservation de repas</h4>
+  </div>
+  <!-- Basic Layout & Basic with Icons -->
+  <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+      <div class="card mb-4">
+        <div class="card-body">
+          <form  style="font-size:12px;" >
+
+
+            <h4 class="fw-bold py-3 mb-4"> Réservation de Repas </h4>
+
+            <div class="input-group lieu">
+              <label class="input-group-text " for="sct" style="background-color: rgba(91,215,50,0.63) ; color: white">
+                <i class="bx bxs-home"></i>Lieu du repas
+              </label>
+              <select class="form-select" id="sct" (change)="fetchRepasBySection($any($event.target).value)">
+                <option style="color: black" >Select an area</option>
+                <ng-container *ngFor="let s of sections;let i = index">
+                  <option style="color: black" *ngIf="s.gestionreservations" [value]="s.section" [selected]="0" >{{s.designation}}</option>
+                </ng-container>
+              </select>
+
+            </div>
+
+            <br>
+
+            <br>
+
+            <div class="card">
+              <h5 class="card-header"><div class="nav-item d-flex align-items-center"><i class="bx bx-search "></i><input type="text" placeholder="Search..."  class="form-control border-0 shadow-none"></div></h5>
+              <div class="table-responsive text-nowrap">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>Semaine</th>
+                    <th>Lundi</th>
+                    <th>Mardi</th>
+                    <th>Mercredi</th>
+                    <th>Jeudi</th>
+                    <th>Vendredi</th>
+                    <th>Samedi</th>
+                    <th>Dimanche</th>
+                  </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                  <ng-container *ngFor="let week of weeks">
+                    <tr>
+                      <td>
+                        <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                        <strong>
+                          {{ week.startDate | date: 'dd/MM' }} <i class='bx bx-right-arrow-alt'></i>
+                          {{ week.endDate | date: 'dd/MM' }}
+                        </strong>
+                      </td>
+                      <!-- Loop through the days of the week -->
+                     <td *ngFor="let day of getDaysOfWeek(week.startDate)">
+                        <ng-container *ngIf="hasRepasOnDay(day); else noRepas">
+                          <div class="repas-day-container">
+                            <!-- Show count if multiple repas -->
+                            <div *ngIf="getAllRepasOnDay(day).length > 1" class="repas-count-badge">
+                              {{ getAllRepasOnDay(day).length }} repas
+                            </div>
+                            
+                            <a class="reserve" [routerLink]="['/client/DetailRepasClientComponent', getRepasIdOnDay(day, week)]">
+                              <img src="../assets/img/logos/eye.png" width="20"/>
+                            </a>
+                          </div>
+                        </ng-container>
+                          <!--<ng-container *ngIf="isRepasReserved(getRepasIdOnDay(day, week)) | async as isReserved">
+                            <a class="reserve" *ngIf="!isReserved" [routerLink]="['/client/DetailRepasClientComponent', getRepasIdOnDay(day, week)]">
+                              <img src="../assets/img/logos/eye.png" width="20"/>
+                            </a>
+                           <button class="btn btn-primary" *ngIf="isReserved">Reserved</button>
+                          </ng-container>-->
+
+                        <ng-template #noRepas>
+                          <a class="reserve">
+                            <img src="../assets/img/logos/forbidden.png" width="20"/>
+                          </a>
+                        </ng-template>
+                      </td>
+                    </tr>
+                  </ng-container>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+
+
+
+            <div class="card-body ">
+              <div class="row">
+                <div class="col">
+                  <div class="demo-inline-spacing">
+                    <!-- Basic Pagination -->
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination">
+                        <li class="page-item first">
+                          <a class="page-link" ><i class="tf-icon bx bx-chevrons-left"></i></a>
+                        </li>
+                        <li class="page-item prev">
+                          <a class="page-link" ><i class="tf-icon bx bx-chevron-left"></i></a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link">1</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link">2</a>
+                        </li>
+                        <li class="page-item active">
+                          <a class="page-link">3</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link">4</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link">5</a>
+                        </li>
+                        <li class="page-item next">
+                          <a class="page-link" ><i class="tf-icon bx bx-chevron-right"></i></a>
+                        </li>
+                        <li class="page-item last">
+                          <a class="page-link"><i class="tf-icon bx bx-chevrons-right"></i></a>
+                        </li>
+                      </ul>
+                    </nav>
+                    <!--/ Basic Pagination -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- HTML !-->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--<div class="input-group lieu">
+      <label class="input-group-text " for="sct" style="background-color: rgba(91,215,50,0.63) ; color: white"> <i class="bx bxs-home"></i>Service</label>
+      <select class="form-select" id="svc"  [(ngModel)]="selectedService" (change)="onServiceChange($any($event.target).value)">
+          <option style="color: black"  *ngFor="let s of services" >{{ s.codeservice}}</option>
+      </select>
+   </div>-->

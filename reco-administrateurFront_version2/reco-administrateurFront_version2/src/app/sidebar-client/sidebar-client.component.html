@@ -1,0 +1,65 @@
+
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+      <div class="app-brand demo">
+                <span class="app-brand-logo demo">
+                 <img src="../assets/img/logos/restonet.png">
+                </span>
+      </div>
+
+      <ul  class="menu-inner py-1">
+
+
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Paramétrage Génerale</span></li>
+        <!-- Cards -->
+        <li class="menu-item active">
+          <a routerLink="/client/infoscompte" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+            <div data-i18n="Basic">Infos Compte</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a routerLink="/client/ReservationRepasClientComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+            <div data-i18n="Basic">Réservation</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a routerLink="/client/mouvements" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+            <div data-i18n="Basic">Mouvements</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a  routerLink="/client/ApprovisionnerClientComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circlfe"></i>
+            <div data-i18n="Analytics">Approvisionnement</div>
+          </a>
+        </li>
+        <!-- possibilité de donner le role de faire des suggection qd isCreate retourne true -->
+
+          <li class="menu-item">
+            <a  routerLink="/client/suggestion" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circlfe"></i>
+              <div data-i18n="Analytics">Suggestions</div>
+            </a>
+          </li>
+
+
+      </ul>
+    </aside>
+    <div class="layout-page">
+      <app-nav-bar-client></app-nav-bar-client>
+
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+
+</div>
+

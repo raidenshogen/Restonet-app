@@ -1,0 +1,124 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title fw-semibold mb-4" style="text-align: center">Infos compte</h5>
+    
+    <!-- Add loading indicator -->
+    <div *ngIf="loading" class="text-center p-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+
+    <!-- Show form only when data is loaded -->
+    <div class="container" *ngIf="!loading">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="mb-3 d-flex justify-content-between align-items-start">
+            <div>
+              <!-- ADD CLICK EVENT AND STYLING TO THE IMAGE -->
+              <div class="rounded-circle overflow-hidden mb-2 position-relative" 
+                   style="width: 100px; height: 100px; cursor: pointer;"
+                  >
+                
+                <img [src]="getImageUrl()" 
+                     alt="Photo du convive" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                
+                <!-- OVERLAY ON HOVER -->
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+                     onmouseout="this.style.opacity='0'">
+                </div>
+              </div>
+              
+              <!-- HIDDEN FILE INPUT -->
+              <!-- <input type="file" 
+                     id="imageFileInput" 
+                     accept="image/*" 
+                     style="display: none;" 
+                     (change)="onFileSelected($event)"> -->
+              
+              <!-- CHANGED: userData to client -->
+              <h5 class="mb-4">{{ client?.nom || 'N/A' }} {{ client?.prenom || 'N/A' }}</h5>
+            </div>
+            <div class="d-flex flex-column justify-content-end mt-8">
+              <!-- CHANGED: userData to client -->
+              <div class="badge bg-success mb-2">Mon solde {{ client?.nouveausolde || 0 }}MAD</div>
+              <div class="badge bg-danger">Mon solde de points {{ client?.nouveausoldepoints || 0}}MAD</div>
+            </div>
+          </div>
+          <form>
+            <div class="mb-3">
+              <label for="societe" class="form-label">Société</label>
+              <!-- CHANGED: userData to client -->
+              <input type="text" class="form-control" id="societe" [value]="client?.societe || ''" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="unite" class="form-label">Unité</label>
+              <!-- CHANGED: userData to client -->
+              <input type="text" class="form-control" id="unite" [value]="client.unite" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="categorie" class="form-label">Catégorie</label>
+              <!-- CHANGED: userData to client -->
+              <input type="text" class="form-control" id="categorie" [value]="client.categorieclient" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="modepaiement" class="form-label">Mode de paiement</label>
+              <div class="mb-3 d-flex align-items-center">
+                <input type="text" class="form-control me-3" id="modepaiement" value="Retrait sur salaire" readonly>
+                <button class="btn btn-warning" disabled><i class="bx bx-edit"></i></button>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="dernierrepas" class="form-label">Dernier repas</label>
+              <!-- CHANGED: userData to client -->
+              <input type="text" class="form-control" id="dernierrepas" [value]="client.datedernierrepas" readonly>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="ticketCheckbox">
+              <label class="form-check-label" for="ticketCheckbox">Imprimer un ticket lors de mon passage en caisse <i class="ti ti-printer"></i></label>
+            </div>
+            <div class="mb-3">
+              <label for="pass" class="form-label">Mot de passe</label>
+              <div class="d-flex align-items-center">
+                <input type="password" class="form-control me-3" id="pass" value="xxxxxxx" readonly>
+                <button class="btn btn-warning" (click)="togglePasswordForm()"><i class="bx bx-edit"></i></button>
+              </div>
+              <p>(nombre de caractères non significatif)</p>
+            </div>
+            <div class="password-form-container" *ngIf="showPasswordForm">
+              <div class="password-form border p-3">
+                <h6 style="text-align: center">Changer votre mot de passe </h6>
+                <form (ngSubmit)="submitPasswordForm()">
+                  <div class="form-group mb-3">
+                    <label for="newPassword">Nouveau mot de passe</label>
+                    <input type="password" class="form-control" id="newPassword" [formControl]="newPassword">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="newPassword1">Resaisissez le nouveau mot de passe</label>
+                    <input type="password" class="form-control" id="newPassword1" [formControl]="newPassword1">
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="button" class="btn btn-light-info" (click)="cancelPasswordForm()">Annuler</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <form (ngSubmit)="submitEmailForm($event)">
+              <div class="mb-3">
+                <label for="mail" class="form-label">Votre adresse mail</label>
+                <div class="d-flex align-items-center">
+                  <input type="email" class="form-control me-3" id="mail" name="email" [formControl]="newEmail">
+                  <button type="submit" class="btn btn-warning"><i class="bx bx-refresh"></i></button>
+                </div>
+              </div>
+            </form>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END OF CARD -->
+

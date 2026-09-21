@@ -1,0 +1,226 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div  class="para">
+    <h4 class="fw-bold py-3 mb-4" > Paramétrage des approvisionnements</h4>
+  </div>
+  <!-- Basic Layout & Basic with Icons -->
+  <div class="row">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+      <div class="card mb-4">
+        <div class="card-body">
+          <form  style="font-size:12px;">
+
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Paramétrage des approvisionnements </span> </h4>
+
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" >Activer l'approvisionnement</label>
+              <div class="col-sm-2">
+                <div class="form-check form-check-inline mt-3">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio22" value="option1">
+                  <label class="form-check-label" for="inlineRadio22">Oui</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio23" value="option2">
+                  <label class="form-check-label" for="inlineRadio23">Non</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" > Autoriser l'approvisionnement pour les comptes en retrait / salaire</label>
+              <div class="col-sm-2">
+                <div class="form-check form-check-inline mt-3">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
+                  <label class="form-check-label" for="inlineRadio2">Oui</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
+                  <label class="form-check-label" for="inlineRadio3">Non</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" > Autoriser l'approvisionnement pour les comptes en post-paiement</label>
+              <div class="col-sm-2">
+                <div class="form-check form-check-inline mt-3">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="option1">
+                  <label class="form-check-label" for="inlineRadio8">Oui</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="option2">
+                  <label class="form-check-label" for="inlineRadio9">Non</label>
+                </div>
+              </div>
+            </div>
+ <br>
+
+            <div class="row mb-4">
+            <div class="alert alert-danger" role="alert">
+              Ne renseigner les champs ci - dessous que si vous avez activé l'approvisionnement.</div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="exampleFormControlSelect0">Site de paiement sécurisé associé</label>
+              <div class="col-sm-4">
+                <select class="form-select" id="exampleFormControlSelect0" aria-label="DEMONSTRATION">
+                  <option selected="" value="1">DEMONSTRATION </option>
+                </select>
+              </div>
+            </div>
+
+            <!--  <div class="row mb-3>
+              <label class="col-sm-6 col-form-label" for="inlineRadio52">N°</label>
+
+              <div class="col-sm-2">
+                <div class="form-check form-check-inline mt-3">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio52" value="option1">
+                  <label class="form-check-label" for="inlineRadio52">Oui</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2">
+                  <label class="form-check-label" for="inlineRadio4">Non</label>
+                </div>
+              </div>
+            </div>
+
+          <span>NB : Dans le cas d'un n° transaction en timestamp UNIX, Le n° généré est composé des deux premiers caractères. du nom du client suivi du timestamp UNIX.</span>
+           --><br>
+
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label">Activer la trace texte des approvisionnements</label>
+              <div class="col-sm-2">
+                <div class="form-check form-check-inline mt-3">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio65" value="option1">
+                  <label class="form-check-label" for="inlineRadio65">Oui</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio67" value="option2">
+                  <label class="form-check-label" for="inlineRadio67">Non</label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="exampleFormControlSelect0">Poste associépour les mouvements</label>
+              <div class="col-sm-4">
+                <select class="form-select" id="exampleFormControlSelect1" aria-label="Caisse régie">
+                  <option selected="" value="1">Caisse régie </option>
+                  <option selected="" value="2">Caisse self</option>
+                  <option selected="" value="2">Gestion</option>
+                  <option selected="" value="2">Serveur / Pop And Pay</option>
+                </select>
+              </div>
+            </div>
+
+
+
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="exampleFormControlSelect0">Mode de règlement associé</label>
+              <div class="col-sm-4">
+                <select class="form-select" id="exampleFormControlSelect5" aria-label="CARTE BANCAIRE">
+                  <option value="AUCUN"></option>
+                  <option value="B">CARTE BANCAIRE</option>
+                  <option value="CW">CB - E_CHARGEMENT</option>
+                  <option value="CC">CHANGEMENT CATEGORIE</option>
+                  <option value="C">CHEQUE</option>
+                  <option value="E">ESPECES</option>
+                  <option value="FP">FACT. POST PAIEMENT</option>
+                  <option value="FB">FACT. PREL. BANCAIRE</option>
+                  <option value="FR">FACT. RET. SALAIRE</option>
+                  <option value="P">POINTS</option>
+                  <option value="R">REGULARISATION</option>
+                  <option value="HS">Solde hors site</option>
+                  <option value="TR">TICKET RESTAURANT</option>
+                  <option value="TD">TICKET RESTO DEMAT.</option>
+                  <option value="TS">TRANSFERT SOLDE</option>
+                  <option value="V">VIREMENT</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="exampleFormControlSelect0">Mode d'approvisionnement   </label>
+              <div class="col-sm-4">
+                <select class="form-select" id="exampleFormControlSelect8" aria-label="Liste de montants ">
+                  <option selected="" value="1">Liste de montants  </option>
+                  <option selected="" value="2">Borné </option>
+                  <option selected="" value="2">Mixte</option>
+                </select>
+              </div>
+            </div>
+
+
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Valeurs de règlement</span> </h4>
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="RGL1">Reglement 1</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="RGL1"  value="30" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="RGL2">Reglement 2</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="RGL2"  value="40" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="RGL3">Reglement 3</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="RGL3"  value="50" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="RGL4">Reglement 4</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="RGL4"  value="60" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="RGL5">Reglement 5</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="RGL5"  value="80" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="RGL6">Reglement 6</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="RGL6"  value="200" />
+              </div>
+            </div>
+
+
+
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Valeurs min et max </span> </h4>
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="val1">Valeur minimum</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="val1"  value="30" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-6 col-form-label" for="val2">Valeur maximum</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="val2"  value="100" />
+              </div>
+            </div>
+            <br>
+            <div class="row justify-content-end">
+              <div class="col-sm-7">
+                <!-- HTML !-->
+                <button class="button-34" role="valider">Valider</button>
+              </div>
+            </div>
+
+
+            <!-- HTML !-->
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

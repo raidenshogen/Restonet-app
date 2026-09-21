@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title fw-semibold mb-4" style="text-align: center">Nouvelle suggestion</h5>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 border text-center p-4">
+          <p>Vous souhaitez donner votre avis, indiquer à l'équipe de restauration vos remarques ou vos félicitations, vous avez une idée, une suggestion ?</p>
+          <button class="btn btn-primary mb-4" (click)="toggleSuggForm()"><i class="bx bx-plus"></i> Déposer une nouvelle suggestion</button>
+          <div class="password-form-container" *ngIf="showSuggForm">
+            <div class="password-form border p-3">
+              <h6 style="text-align: center">Votre suggestion</h6>
+             <form (ngSubmit)="submitSuggForm()">
+  <div class="form-group mb-3">
+    <label for="mail">Email</label>
+    <input type="email" class="form-control" id="mail" [(ngModel)]="suggestion.email" name="email">
+  </div>
+  <div class="form-group mb-3">
+  <label for="lieu">Lieu de repas</label>
+  <select class="form-control" id="lieu" [(ngModel)]="selectedSection" name="section" required>
+    <option value="" disabled>-- Sélectionnez un lieu --</option>
+    <option *ngFor="let sec of sections" [value]="sec.designation">
+      {{ sec.designation }}
+    </option>
+  </select>
+</div>
+  <div class="form-group mb-3">
+    <label for="comment">Text/Contenu</label>
+    <textarea 
+    class="form-control" 
+    id="comment" 
+    [(ngModel)]="suggestion.messages" 
+    name="messages"
+    rows="4"
+    placeholder="Décrivez votre suggestion..."
+    required>
+  </textarea>
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary me-3">Enregistrer</button>
+    <button type="button" class="btn btn-light-info" (click)="cancelSuggForm()">Annuler</button>
+  </div>
+</form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

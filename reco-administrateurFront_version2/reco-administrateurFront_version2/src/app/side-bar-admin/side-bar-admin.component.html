@@ -1,0 +1,124 @@
+
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+      <div class="app-brand demo">
+              <span class="app-brand-logo demo">
+               <img src="../assets/img/logos/restonet.png">
+              </span>
+      </div>
+
+      <ul class="menu-inner py-1">
+        <li class="menu-item active">
+          <a routerLink="/admin/ParametresGenerauxAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circlfe"></i>
+            <div data-i18n="Analytics">Accueil</div>
+          </a>
+        </li>
+
+        <!-- parametrage generale -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Paramétrage Génerale</span></li>
+        <!-- Cards -->
+        <li class="menu-item">
+          <a routerLink="/admin/ParametrageAccesAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+            <div data-i18n="Basic">Accès à Restonet</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a routerLink="/admin/ParametrageInterfaceAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-sidebar"></i>
+            <div data-i18n="Basic">Interface & Fonctionnalités</div>
+          </a>
+        </li>
+        <li *ngIf="authService.isAdmin()"  class="menu-item">
+          <a routerLink="/admin/ReservationAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-restaurant"></i>
+            <div data-i18n="Basic">Réservation</div>
+          </a>
+        </li>
+        <li *ngIf="authService.isAdmin()"  class="menu-item">
+          <a routerLink="/admin/ApprovisionnementAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-collection"></i>
+            <div data-i18n="Basic">Approvisionnement</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a routerLink="/admin/AdministrationAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-user-circle"></i>
+            <div data-i18n="Basic">Administration</div>
+          </a>
+        </li>
+
+        <!-- Base de données -->
+        <li class="menu-header small text-uppercase">
+          <span class="menu-header-text">Base de données</span>
+        </li>
+
+        <li class="menu-item">
+          <a routerLink="/admin/BdParaAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-data"></i>
+            <div data-i18n="parametrer-acces">Paramétrer l'accès</div>
+          </a>
+        </li>
+
+        <li class="menu-item">
+          <a routerLink="/admin/PageNotfndAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+            <div data-i18n="parametrer-acces">Tester l'accès</div>
+          </a>
+        </li>
+        <!-- Tests -->
+        <li class="menu-header small text-uppercase">
+          <span class="menu-header-text">Tests</span>
+        </li>
+
+        <li class="menu-item">
+          <a routerLink="/admin/TestEnvoiMailAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-mail-send"></i>
+            <div data-i18n="parametrer-acces">Tester envoi de mails</div>
+          </a>
+        </li>
+
+        <li class="menu-item">
+          <a routerLink="/admin/PageNotfndAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+            <div data-i18n="teste-acces">Test accès LDAP</div>
+          </a>
+        </li>
+
+
+
+        <li class="menu-item">
+          <a routerLink="/admin/PageNotfndAdminComponent" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-palette"></i>
+            <div data-i18n="Basic">Parametrage graphique</div>
+          </a>
+        </li>
+      </ul>
+
+    </aside>
+
+
+    <div class="layout-page">
+
+      <app-nav-bar-admin></app-nav-bar-admin>
+
+      <!-- / Navbar -->
+
+
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+
+
+        <app-footer-admin></app-footer-admin>
+      </div>
+
+    </div>
+
+
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+
+</div>
+

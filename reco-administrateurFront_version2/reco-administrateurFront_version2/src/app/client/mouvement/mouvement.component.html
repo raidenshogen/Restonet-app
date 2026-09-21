@@ -1,0 +1,63 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title fw-semibold mb-4" style="text-align: center">Historique de vos mouvements</h5>
+    <div class="container">
+      <ng-container *ngIf="!mouvements || mouvements.length === 0; else mouvementTable">
+        <div class="card-body text-center border-top border-danger">
+          <h5 class="card-title fw-semibold mb-4 text-danger">Aucun mouvement trouvé</h5>
+          <p class="text-muted">Il n'y a pas de mouvements à afficher pour le moment!</p>
+        </div>
+      </ng-container>
+      <ng-template #mouvementTable>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Heure</th>
+          <th>Lieu</th>
+          <th>Passage</th>
+          <th>N° Ticket</th>
+          <th>Ancien solde</th>
+          <th>Appro</th>
+          <th>Montant payé</th>
+          <th>Nouveau solde</th>
+          <th>détails</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let mouvement of mouvements; let i = index">
+          <tr>
+            <td>{{ mouvement.dateoperation  | date: 'yyyy-MM-dd' }} </td>
+            <td> {{ mouvement.heure }}</td>
+            <td>{{ mouvement.section.designation }}</td>
+            <td>{{ mouvement.passage }}</td>
+            <td>{{ mouvement.numeroticket }}</td>
+            <td>{{ mouvement.anciensolde}}</td>
+            <td>{{ mouvement.client.approvisionnement }}</td>
+            <td>{{ mouvement.montantpaye }}</td>
+            <td>{{ mouvement.nouveausolde }}</td>
+            <td>
+              <button class="btn btn-warning" (click)="toggleDetails(i)">
+                <i class="bx bx-show"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="mouvement.showDetails">
+            <td colspan="8">
+              <div class="card-body border bg-light-success p-8" >
+                <p><strong>Num Ticket:</strong> {{ mouvement.numeroticket }}</p>
+                <p><strong>Ancien Solde:</strong> {{ mouvement.anciensolde}}</p>
+                <p><strong>Mode de règlement:</strong>pre-payé</p>
+                <p><strong>Montant Payé:</strong> {{ mouvement.montantpaye }}</p>
+                <p><strong style="color: #0fb294">Nouveau Solde:</strong> {{ mouvement.nouveausolde }}</p>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<button class="btn btn-success bottom-element" (click)="scrollToTop()"> <i class="bx bx-up-arrow-alt"></i></button>

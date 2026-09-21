@@ -1,0 +1,31 @@
+<div class="card text-center" style="max-width: 800px; margin: auto;">
+  <div class="card-body">
+    <a class="btn btn-light-info retour mb-6" href="/login"><i class="bx bx-arrow-back"></i></a>
+    <h5 class="card-title fw-semibold mb-4">Récupération de mot de passe</h5>
+    <div class="password-form-container">
+      <div class="password-form border p-3 text-start">
+        <p>Si vous avez perdu votre mot de passe mais que vous connaissez votre identifiant, saisissez votre identifiant dans le champ ci-dessous. Votre email doit avoir été renseigné dans RestoNet.</p>
+        <form>
+          <div class="mb-3">
+            <label for="idresto" class="form-label">votre identifiant RestoNet</label>
+            <div class="d-flex align-items-center">
+             <input #idInput type="text" class="form-control me-3" id="idresto" placeholder="Id restonet">              <button type="submit" class="btn btn-success"><i class="bx bx-check"></i></button>
+            </div>
+          </div>
+        </form>
+        <p>Si ce n'est pas le cas, ou que vous avez changé d'adresse mail, saisissez votre email dans le champ ci-dessous.</p>
+        <form>
+          <div class="mb-3">
+            <label for="mailresto" class="form-label">votre Email</label>
+            <div class="d-flex align-items-center">
+             <input #emailInput type="email" class="form-control me-3" id="mailresto" placeholder="Email">              <button type="submit" class="btn btn-success"><i class="bx bx-check"></i></button>
+            </div>
+          </div>
+        </form>
+        <p>Dans les deux cas, vous allez recevoir rapidement par mail un nouveau mot de passe pour accéder à RestoNet. Utilisez ce nouveau mot de passe pour accéder au site.</p>
+
+        <p>Attention, pensez à vérifier que le mail n'a pas été déplacé dans le dossier "courriers indésirables", "spam" ou encore dans la "corbeille".</p>
+      </div>
+    </div>
+  </div>
+</div>
