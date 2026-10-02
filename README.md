@@ -50,25 +50,9 @@ The solution focuses on:
 
 ## Application preview
 
-The following screenshots are taken from the project report and show key application workflows.
+The project report contains screenshots of the sign-in, password recovery, account information, reservation calendar, meal details, reservation history, movements, and suggestion workflows.
 
-| Sign-in | Password recovery |
-|---|---|
-| ![RestoNet sign-in screen](docs/screenshots/login.jpg) | ![Password recovery screen](docs/screenshots/password-recovery.jpg) |
-
-| Account information | Reservation calendar |
-|---|---|
-| ![Client account information](docs/screenshots/account.jpg) | ![Meal reservation calendar](docs/screenshots/reservation-calendar.jpg) |
-
-| Meal details | Reservation details |
-|---|---|
-| ![Meal details](docs/screenshots/meal-details.jpg) | ![Reservation details](docs/screenshots/reservation-details.jpg) |
-
-| Movements | Suggestions |
-|---|---|
-| ![Account movements](docs/screenshots/movements.jpg) | ![Suggestion form](docs/screenshots/suggestion-form.jpg) |
-
-Additional screen: [Reservation list](docs/screenshots/reservation-list.jpg).
+To display the screenshots in this README, add the image files from the accompanying `docs/screenshots/` archive to this repository. The gallery can then use relative image paths such as `docs/screenshots/login.jpg`.
 
 ## Architecture
 
