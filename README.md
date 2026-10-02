@@ -1,124 +1,160 @@
-# Restonet
+# RestoNet
 
-Restonet is a full-stack restaurant management and reservation application built with an Angular frontend and a Spring Boot REST API backed by Oracle Database.
+**A full-stack web application for corporate meal reservations and cafeteria operations.**
 
-## Overview
+RestoNet modernizes a legacy PHP4 application into a web solution built with **Angular 17**, **Java 23 / Spring Boot**, and **Oracle Database**. It supports employee meal reservations and gives users access to account information, consumption history, sales movements, and suggestions.
 
-The application provides customer-facing restaurant features including authentication, account management, reservations, sales/movements, suggestions, and meal/reservation-related operations.
+> Project developed during a final-year internship at Nexpublica. This repository contains the application source code; the accompanying project report provides additional context and interface illustrations.
 
-The project is organized as two main applications:
-- **Frontend:** Angular 17
-- **Backend:** Spring Boot 3.2.4 / Java 23
-- **Database:** Oracle Database
-- **Authentication:** JWT-based authentication with Spring Security
-- **Email:** Spring Mail / Gmail SMTP
-- **ORM:** Spring Data JPA / Hibernate
-- **UI:** Angular with Bootstrap
+## At a glance
+
+| | |
+|---|---|
+| **Domain** | Corporate catering / employee meal management |
+| **Frontend** | Angular 17 · TypeScript · Bootstrap |
+| **Backend** | Java 23 · Spring Boot 3.2.4 |
+| **API** | Spring MVC · REST · JSON |
+| **Persistence** | Spring Data JPA · Hibernate |
+| **Database** | Oracle Database |
+| **Authentication** | Spring Security · JWT |
+| **Email** | Spring Boot Mail / SMTP |
+
+## Why RestoNet?
+
+The project addresses the modernization of a legacy restaurant-management application. The goal was to make day-to-day meal operations more accessible through a web interface while separating the user interface from backend business logic.
+
+The solution focuses on:
+- Simplifying employee meal reservations.
+- Providing access to account and consumption information.
+- Supporting financial traceability through balances and sales/movement history.
+- Structuring backend code into maintainable application layers.
+- Protecting access through token-based authentication.
+
+## Main features
+
+### Employee experience
+- **Authentication:** sign in with a personal identifier and password.
+- **Account information:** consult account details and balance-related information.
+- **Meal reservations:** select a restaurant/section, consult availability and manage reservations.
+- **Meal details:** view information associated with a selected meal and reservation.
+- **Consumption history:** consult sales and movement history.
+- **Suggestions:** submit feedback or suggestions related to the application.
+- **Password recovery:** request account recovery using an identifier or email.
+
+### Application capabilities
+- REST endpoints consumed by the Angular application.
+- Persistence through JPA entities and Spring Data repositories.
+- JWT-based authentication and protected requests.
+- Email functionality through SMTP.
+- A modular frontend with dedicated components and services.
+
+## Application preview
+
+The project report includes interface illustrations for the following workflows:
+
+| Screen | What it illustrates |
+|---|---|
+| Client sign-in | Authentication form and language selection |
+| Password recovery | Account recovery using an identifier or email |
+| Meal reservation | Section selection and reservation calendar |
+| Meal details | Selected meal and reservation information |
+| Suggestions | Customer feedback submission |
+| Movements | History of account movements |
+
+To keep the repository self-contained, add the original screenshots under `docs/screenshots/` and embed them here using relative Markdown image links. Only genuine application captures should be used in this section.
 
 ## Architecture
 
+RestoNet uses a **separated frontend/backend architecture**. The Angular application communicates with a Spring Boot REST API, which applies business logic and accesses Oracle through Spring Data JPA.
+
 ~~~mermaid
 flowchart LR
-    U[Customer / User] --> FE[Angular 17 Frontend]
-    FE -->|HTTPS REST / JSON| API[Spring Boot REST API]
-    API --> SEC[Spring Security + JWT]
-    API --> SVC[Service Layer]
-    SVC --> REP[Spring Data JPA Repositories]
-    REP --> DB[(Oracle Database)]
-    SVC --> MAIL[SMTP Mail Service]
+    U[Employee / User] --> FE[Angular 17]
+    FE -->|REST / JSON over HTTPS| API[Spring Boot REST API]
+    API --> AUTH[Spring Security + JWT]
+    API --> SVC[Business Services]
+    SVC --> REPO[Spring Data JPA]
+    REPO --> DB[(Oracle Database)]
+    SVC --> EMAIL[SMTP Email]
 ~~~
 
-This is a **frontend/backend application**, not a microservices architecture. The backend exposes REST endpoints consumed by the Angular application.
+The backend is organized into controllers, services, repositories, entities, DTOs and security-related components. This is a layered application; it is not documented as a microservices system.
 
-## Main Features
+See [Architecture documentation](docs/ARCHITECTURE.md) for more detail.
 
-### Authentication and account management
-- User login
-- JWT token generation and validation
-- Password change
-- Password reset flows
-- Customer profile and account information
-- Email-based operations
-
-### Reservations
-- Create reservations
-- Retrieve reservations
-- Reservation-related counts
-- Meal/reservation details
-
-### Sales and movements
-- Retrieve sales for the current user
-- Create movements
-- Ticket-related counts
-
-### Suggestions
-- Retrieve suggestions for a customer
-- Create suggestions
-- Suggestion counts
-
-### Restaurant data
-The backend also contains domain entities and controllers for articles, sections, services, customer categories, payment modes, meals, reservations and related details.
-
-## Technology Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | Angular 17.2 |
-| Language | TypeScript 5.3 |
-| UI | Bootstrap 5.3 |
-| Backend | Spring Boot 3.2.4 |
-| Language | Java 23 |
-| Security | Spring Security + JJWT 0.11.5 |
-| Persistence | Spring Data JPA / Hibernate |
-| Database | Oracle Database |
-| Email | Spring Boot Mail |
-| Build | Maven / Angular CLI |
-| Testing | JUnit / Spring Boot Test |
-
-## Project Structure
+## Repository structure
 
 ~~~text
 Restonet-app/
 ├── RestonetBackend_version2/
 │   └── RestonetBackend_version2/
-│       ├── src/main/java/
-│       │   └── ma/inetum/restonetbackend/
-│       │       ├── controllers/
-│       │       ├── entities/
-│       │       ├── repositories/
-│       │       ├── services/
-│       │       ├── security/
-│       │       ├── filters/
-│       │       ├── utils/
-│       │       └── dto/
+│       ├── src/main/java/ma/inetum/restonetbackend/
+│       │   ├── controllers/
+│       │   ├── dto/
+│       │   ├── entities/
+│       │   ├── repositories/
+│       │   ├── services/
+│       │   ├── security/
+│       │   ├── filters/
+│       │   └── utils/
 │       ├── src/main/resources/
-│       │   └── application.properties
 │       └── pom.xml
-│
 ├── reco-administrateurFront_version2/
 │   └── reco-administrateurFront_version2/
 │       ├── src/app/
-│       │   ├── Authentification/
-│       │   ├── client/
-│       │   └── services/
+│       ├── src/assets/
 │       └── package.json
-│
 └── docs/
-    ├── ARCHITECTURE.md
-    └── API.md
+    ├── API.md
+    └── ARCHITECTURE.md
 ~~~
 
-## Security
+## Getting started
 
-Authentication is implemented with JWT and Spring Security. The frontend stores the received JWT and sends it with protected API requests using the `Authorization: Bearer <token>` header.
+### Prerequisites
 
-Database, mail and SSL credentials are configured through environment variables rather than hardcoded values.
+- Java 23
+- Maven (or the included Maven wrapper)
+- Node.js and npm
+- Oracle Database access
+- Runtime configuration for database, mail and SSL, where applicable
 
-> Never commit real credentials, private keys, keystores or JWT signing secrets to the repository.
+### Backend
 
-## Configuration
+From `RestonetBackend_version2/RestonetBackend_version2`:
 
-The backend expects environment variables for sensitive configuration:
+~~~bash
+./mvnw spring-boot:run
+~~~
+
+On Windows:
+
+~~~powershell
+.`mvnw.cmd` spring-boot:run
+~~~
+
+To build the backend:
+
+~~~bash
+./mvnw clean package
+~~~
+
+The backend needs a reachable Oracle database and the required runtime configuration before it can start successfully.
+
+### Frontend
+
+From `reco-administrateurFront_version2/reco-administrateurFront_version2`:
+
+~~~bash
+npm install
+npm run build
+~~~
+
+The project also defines a development script configured for HTTPS on port 9090. Check the scripts in `package.json` for the exact command before starting the development server.
+
+## Configuration and security
+
+Sensitive values must be provided by the runtime environment, not committed to Git. The backend configuration uses these variable names:
 
 ~~~text
 DB_USERNAME
@@ -128,48 +164,19 @@ MAIL_PASSWORD
 SSL_KEYSTORE_PASSWORD
 ~~~
 
-The actual values must be supplied by the runtime environment and must not be committed to Git.
+Set the variables in the environment where the backend runs. Never add real credentials, JWT signing secrets, private keys, keystores, or personal data to the repository.
 
-## Running the Backend
+## Documentation
 
-From the backend directory:
+- [REST API reference](docs/API.md)
+- [System architecture](docs/ARCHITECTURE.md)
 
-~~~bash
-mvn spring-boot:run
-~~~
+## Scope and notes
 
-Or build the application:
+This repository documents the implementation and project scope reflected in the source code and internship report. External integrations and future enhancements are not presented as completed features. Performance objectives described in the report should not be interpreted as measured production results unless supported by reproducible benchmarks.
 
-~~~bash
-mvn clean package
-~~~
+## Author
 
-The backend requires:
-- Java 23
-- Maven
-- An accessible Oracle Database
-- Required environment variables
-- SSL keystore configuration when HTTPS is enabled
+**Zineb Nafil** · Full-Stack Java Developer
 
-## Running the Frontend
-
-From the Angular project directory:
-
-~~~bash
-npm install
-npm run build
-~~~
-
-The repository currently defines an Angular development command using HTTPS on port **9090**.
-
-## API Documentation
-
-See [docs/API.md](docs/API.md) for the documented REST endpoints.
-
-## Architecture Documentation
-
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the system architecture, responsibilities and request flow.
-
-## Project Status
-
-This documentation describes the implementation visible in the repository. Features or architectural improvements that are not currently implemented are intentionally not presented as existing functionality.
+[GitHub profile](https://github.com/raidenshogen)
