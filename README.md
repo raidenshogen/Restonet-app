@@ -50,18 +50,25 @@ The solution focuses on:
 
 ## Application preview
 
-The project report includes interface illustrations for the following workflows:
+The following screenshots are taken from the project report and show key application workflows.
 
-| Screen | What it illustrates |
+| Sign-in | Password recovery |
 |---|---|
-| Client sign-in | Authentication form and language selection |
-| Password recovery | Account recovery using an identifier or email |
-| Meal reservation | Section selection and reservation calendar |
-| Meal details | Selected meal and reservation information |
-| Suggestions | Customer feedback submission |
-| Movements | History of account movements |
+| ![RestoNet sign-in screen](docs/screenshots/login.jpg) | ![Password recovery screen](docs/screenshots/password-recovery.jpg) |
 
-To keep the repository self-contained, add the original screenshots under `docs/screenshots/` and embed them here using relative Markdown image links. Only genuine application captures should be used in this section.
+| Account information | Reservation calendar |
+|---|---|
+| ![Client account information](docs/screenshots/account.jpg) | ![Meal reservation calendar](docs/screenshots/reservation-calendar.jpg) |
+
+| Meal details | Reservation details |
+|---|---|
+| ![Meal details](docs/screenshots/meal-details.jpg) | ![Reservation details](docs/screenshots/reservation-details.jpg) |
+
+| Movements | Suggestions |
+|---|---|
+| ![Account movements](docs/screenshots/movements.jpg) | ![Suggestion form](docs/screenshots/suggestion-form.jpg) |
+
+Additional screen: [Reservation list](docs/screenshots/reservation-list.jpg).
 
 ## Architecture
 
